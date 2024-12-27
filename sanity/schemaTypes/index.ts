@@ -6,7 +6,9 @@ import {review} from "@/sanity/schemaTypes/reviews";
 import {banner} from "@/sanity/schemaTypes/banner";
 import {order} from "@/sanity/schemaTypes/order";
 import {cart} from "@/sanity/schemaTypes/cart";
+import {brand} from "@/sanity/schemaTypes/brand";
+import {specification} from "@/sanity/schemaTypes/specification";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [user,product,category,review,banner,order,cart],
+  types: [user,product,category,review,banner,order,cart,brand,specification],
 }
