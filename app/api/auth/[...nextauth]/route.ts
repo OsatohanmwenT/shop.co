@@ -16,7 +16,7 @@ const authOptions = {
             clientSecret: process.env.GITHUB_CLIENT_SECRET!,
         }),
     ],
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.AUTH_SECRET,
     pages: {
         signIn: "/"
     }
