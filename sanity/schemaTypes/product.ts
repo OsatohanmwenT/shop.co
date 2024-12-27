@@ -35,9 +35,22 @@ export const product = defineType({
             type: 'number',
         }),
         defineField({
+            name: "brand",
+            title: "Brand",
+            type: "reference",
+            to: [{ type: "brand" }],
+        }),
+        defineField({
+            name: "specifications",
+            title: "Specifications",
+            type: "array",
+            of: [{ type: "specification" }],
+        }),
+        defineField({
             name: 'rating',
             title: 'Rating',
             type: 'number',
+            options: { range: { min: 0, max: 5 } },
         }),
         defineField({
             name: 'reviews',
