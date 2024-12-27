@@ -50,7 +50,6 @@ export const product = defineType({
             name: 'rating',
             title: 'Rating',
             type: 'number',
-            options: { range: { min: 0, max: 5 } },
         }),
         defineField({
             name: 'reviews',
