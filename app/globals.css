@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .banner_container {
+    @apply w-full min-h-[60vh] sm:min-h-[530px] bg-neutral-100 flex justify-center items-center md:py-10 md:px-6;
+  }
+  .sign-in_container {
+    @apply w-full flex items-center justify-center flex-col gap-5;
+  }
+  .search-form {
+    @apply bg-neutral-100 w-full pl-2 overflow-hidden xs:pl-3 pr-1 py-1 rounded-3xl flex items-center gap-1;
+  }
+  .search-input {
+    @apply flex-1 font-work-sans bg-inherit py-2 placeholder:text-neutral-600 w-full h-auto outline-none;
+  }
+  .search-btn {
+    @apply size-[40px] rounded-full bg-black flex justify-center items-center !important;
+  }
+  .btn {
+    @apply border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+  }
+
+  /*hero*/
+  .heading {
+   @apply font-work-sans font-bold text-6xl text-black
+  }
+  .sub-heading {
+    @apply font-medium lg:text-[20px] text-neutral-700 max-w-lg break-words;
+  }
+
+  /*Product card*/
+  .product-card_heading {
+    @apply max-sm:line-clamp-2 text-sm hover:underline active:underline;
+  }
+  .product-card_desc {
+    @apply  line-clamp-1 break-all font-work-sans text-neutral-400 text-xs;
+  }
+  .products-grid_system {
+    grid-template-columns: min(300px, 40vw) 1fr;
+  }
+}
+
+
+.list_scroll {
+  max-width: 100vw;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.list_scroll::-webkit-scrollbar {
+  display: none;
+}
