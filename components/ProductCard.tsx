@@ -8,7 +8,7 @@ import {BiCart} from "react-icons/bi";
 
 const ProductCard = ({name, price, images, _id, discount, rating}: Product) => {
     return (
-        <div className="flex sm:flex-col xl:max-w-[350px] mx-auto items-center justify-start gap-6 sm:gap-1">
+        <div className="flex sm:flex-col xl:max-w-[350px] mx-auto items-center justify-between gap-6 sm:gap-1">
             <Link href={{
                 pathname: `/products/${_id}`,
                 hash: `#${name}`
