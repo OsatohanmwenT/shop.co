@@ -4,7 +4,6 @@ import React from 'react'
 import FilterAccordion from "@/components/FilterControls/FilterAccordion";
 import {Input} from "@/components/ui/input";
 import {Filter} from "@/sanity/types";
-import {Checkbox} from "@/components/ui/checkbox";
 import {ChevronRight} from "lucide-react";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 
@@ -17,10 +16,40 @@ const Filters = ({filters}: Props) => {
     const searchParams = useSearchParams()
     const { replace } = useRouter();
 
+    const updateQueryParams = (name: string, value: string | string[]) => {
+        const params = new URLSearchParams(searchParams);
+
+        if (Array.isArray(value)) {
+            if (value.length > 0) {
+                params.set(name, value.join(","));
+            } else {
+                params.delete(name);
+            }
+        } else {
+            if (value) {
+                params.set(name, value);
+            } else {
+                params.delete(name);
+            }
+        }
+
+        replace(`${pathname}?${params.toString()}`);
+    };
+
     const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
-        console.log(value, name, type)
-    }
+
+        if (type === "checkbox") {
+            const existingValues = new URLSearchParams(searchParams).getAll(name);
+            const updatedValues = checked
+                ? [...existingValues, value]
+                : existingValues.filter((val) => val !== value);
+
+            updateQueryParams(name, updatedValues);
+        } else {
+            updateQueryParams(name, value);
+        }
+    };
 
     return (
         <div className="h-full px-3">

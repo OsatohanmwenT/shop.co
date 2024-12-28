@@ -1,11 +1,25 @@
 "use client"
 
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {MenuIcon} from "lucide-react";
 import {CloseIcon} from "@sanity/icons";
 
 const Menu = () => {
     const [open, setOpen] = useState(false);
+
+    const toggleBodyScroll = (disable: boolean) => {
+        if (disable) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    };
+
+    useEffect(() => {
+        toggleBodyScroll(open);
+
+        return () => toggleBodyScroll(false);
+    }, [open]);
 
     return (
         <>
@@ -16,7 +30,7 @@ const Menu = () => {
             <aside
                 role="menu"
                 aria-label="aside nav menu"
-                className={`inset-y-0 -inset-x-5 z-20 absolute bg-white ${open ? "w-[60vw]" : "w-0"} lg:hidden flex flex-col transition-all duration-500 shadow-2xl`}>
+                className={`inset-y-0 -inset-x-5 z-20 absolute bg-white ${open ? "w-[80vw]" : "w-0"} lg:hidden flex flex-col transition-all duration-500 shadow-2xl`}>
             </aside>
         </>
     )
