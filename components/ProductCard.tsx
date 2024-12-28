@@ -13,7 +13,7 @@ const ProductCard = ({name, price, images, _id, discount, rating}: Product) => {
                 pathname: `/products/${_id}`,
                 hash: `#${name}`
             }} className="max-sm:w-[120px] min-w-[90px]">
-                <img className="sm:h-[150px]" src={images[0] ? images[0]?.asset.url : ""} alt={name}/>
+                <img className="sm:h-[150px]" src={images[0] ? images[0]?.asset?.url : ""} alt={name}/>
             </Link>
             <div className="flex flex-col justify-between gap-2 sm:mt-3 max-xs:max-w-[150px]">
                     {discount ? (
