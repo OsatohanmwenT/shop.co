@@ -20,7 +20,7 @@ const Hero = async () => {
                        alt="star" />
                 <Image height={60} width={60} src="/Vector.png" className="absolute top-[35vh] md:top-[450px] max-md:left-[1] max-lg:md:left-[20vw] lg:right-[38vw]" alt="star" />
                 <div className="xl:size-[500px] flex items-center justify-center">
-                    <img src={banner.image.asset.url} alt="banner image" />
+                    <img src={banner.image?.asset?.url} alt="banner image" />
                 </div>
             </section>
         </section>
