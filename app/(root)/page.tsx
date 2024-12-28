@@ -6,7 +6,7 @@ import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
 
 const Page = () => {
     return (
-        <main className="min-h-screen w-full overflow-x-hidden">
+        <main className="min-h-screen overflow-x-hidden">
             <Hero />
             <Suspense fallback={<ProductCardSkeleton />}>
                 <Products />
