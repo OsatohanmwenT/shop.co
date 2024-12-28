@@ -20,7 +20,7 @@ export default function ControlDrawer() {
                     <Settings2 className="size-5"/>
                 </button>
             </DrawerTrigger>
-            <DrawerContent className="font-work-sans h-screen">
+            <DrawerContent className="font-work-sans">
                 <DrawerHeader>
                     <div className="flex items-center justify-between">
                         <DrawerTitle>Filter</DrawerTitle>
