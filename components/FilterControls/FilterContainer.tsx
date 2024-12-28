@@ -1,8 +1,8 @@
 import React from 'react'
 
-const FilterBar = () => {
+const FilterContainer = () => {
     return (
         <div>FilterBar</div>
     )
 }
-export default FilterBar
+export default FilterContainer

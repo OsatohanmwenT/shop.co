@@ -33,7 +33,7 @@ export default function ControlDrawer() {
                     </div>
                 </DrawerHeader>
                 <Separator />
-                <Suspense fallback={<Skeleton className="h-full" />}>
+                <Suspense fallback={<Skeleton className="h-full w-full" />}>
                     <Filters />
                 </Suspense>
             </DrawerContent>
