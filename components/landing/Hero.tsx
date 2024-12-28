@@ -18,7 +18,7 @@ const Hero = async () => {
                 <Image height={100} width={100} src="/Vector.png"
                        className="absolute top-[30vh] max-lg:w-[80px] max-lg:h-[80px] right-3 lg:top-10 md:right-[15vw] lg:right-5 xl:right-14"
                        alt="star" />
-                <Image height={60} width={60} src="/Vector.png" className="absolute top-[35vh] md:top-[450px] max-md:left-[4] max-lg:md:left-[20vw] lg:right-[38vw]" alt="star" />
+                <Image height={60} width={60} src="/Vector.png" className="absolute top-[35vh] md:top-[450px] max-md:left-[1] max-lg:md:left-[20vw] lg:right-[38vw]" alt="star" />
                 <div className="xl:size-[500px] flex items-center justify-center">
                     <img src={banner.image.asset.url} alt="banner image" />
                 </div>
