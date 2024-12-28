@@ -8,7 +8,8 @@ import {order} from "@/sanity/schemaTypes/order";
 import {cart} from "@/sanity/schemaTypes/cart";
 import {brand} from "@/sanity/schemaTypes/brand";
 import {specification} from "@/sanity/schemaTypes/specification";
+import {filter} from "@/sanity/schemaTypes/filter";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [user,product,category,review,banner,order,cart,brand,specification],
+  types: [user,product,category,review,banner,order,cart,brand,specification,filter],
 }
