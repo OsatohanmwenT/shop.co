@@ -27,7 +27,7 @@ const Navbar = async ({query}: {query?: string}) => {
                             <SearchIcon className="size-5"/>
                         </button>
                     </Form>
-                    <Link className="mr-2" href="/public">
+                    <Link className="mr-2 max-xs:hidden" href="/">
                         <ShoppingCartIcon />
                     </Link>
                     <div className="flex items-center gap-5">
@@ -36,7 +36,7 @@ const Navbar = async ({query}: {query?: string}) => {
                                 <ProfileButton image={session.user.image} name={session.user.name} />
                             </>
                         ): (
-                            <Link href="/auth/login" className="flex items-center gap-1" type="submit">
+                            <Link href="/auth/login" className="flex max-xs:hidden items-center gap-1" type="submit">
                                 Login
                             </Link>
                         )}

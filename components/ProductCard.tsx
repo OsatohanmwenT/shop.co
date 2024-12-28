@@ -23,14 +23,14 @@ const ProductCard = ({name, price, images, _id, discount, rating}: Product) => {
                             </div>
                         )
                         : (
-                            <p className="self-start text-green-700 sm:order-2 font-bold font-work-sans text-xl text-end"><span className="font-medium">Now</span> {formatPrice(price)}</p>
+                            <p className="self-start max-sm:text-sm text-green-700 sm:order-2 font-bold font-work-sans text-xl text-end"><span className="font-medium">Now</span> {formatPrice(price)}</p>
                         )}
                 <Link href={{
                     pathname: `/products/${_id}`,
                     hash: `#${name}`
                 }} className="product-card_heading hover:text-blue-600 sm:order-3">{name}</Link>
                 <div className="justify-self-end flex gap-2 sm:order-3 items-center">
-                    {Array.from({length: rating}, (_, i) => i + 1).map((item, i) => (
+                    {Array.from({length: rating || 0}, (_, i) => i + 1).map((item, i) => (
                         <Star key={i} className="text-yellow-300 fill-yellow-300 size-5" />
                     ))}
                     {Array.from({length: 5 - (rating || 0)}, (_, i) => i + 1).map((item, i) => (
