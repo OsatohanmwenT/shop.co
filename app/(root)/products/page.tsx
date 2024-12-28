@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import {sanityFetch} from "@/sanity/lib/live";
 import {Skeleton} from "@/components/ui/skeleton";
 import Filters from "@/components/FilterControls/Filters";
+import FilterContainer from "@/components/FilterControls/FilterContainer";
 
 const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: string | string[] | undefined}>}) => {
     const filters = await searchParams;
@@ -17,7 +18,7 @@ const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: strin
                 <div className="grid md:products-grid_system">
                     <div className="bg-white hidden md:block border-r-[1px] h-screen">
                         <Suspense fallback={<Skeleton className="h-full" />}>
-                            <Filters />
+                            <FilterContainer />
                         </Suspense>
                     </div>
                     <div className="p-5 min-h-screen bg-white">

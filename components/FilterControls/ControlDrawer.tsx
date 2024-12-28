@@ -6,11 +6,11 @@ import {
     DrawerTitle, DrawerTrigger,
 } from "@/components/ui/drawer";
 import {Separator} from "@/components/ui/separator";
-import Filters from "@/components/FilterControls/Filters";
 import {Settings2} from "lucide-react";
 import {CloseIcon} from "@sanity/icons";
 import {Suspense} from "react";
 import {Skeleton} from "@/components/ui/skeleton";
+import FilterContainer from "@/components/FilterControls/FilterContainer";
 export default function ControlDrawer() {
     return (
         <Drawer>
@@ -34,7 +34,7 @@ export default function ControlDrawer() {
                 </DrawerHeader>
                 <Separator />
                 <Suspense fallback={<Skeleton className="h-full w-full" />}>
-                    <Filters />
+                    <FilterContainer />
                 </Suspense>
             </DrawerContent>
         </Drawer>
