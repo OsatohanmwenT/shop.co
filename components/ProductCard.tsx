@@ -12,7 +12,7 @@ const ProductCard = ({name, price, images, _id, discount, rating}: Product) => {
             <Link href={{
                 pathname: `/products/${_id}`,
                 hash: `#${name}`
-            }} className="max-sm:w-[200px] min-w-[180px]">
+            }} className="max-sm:w-[200px] min-w-[120px]">
                 <img className="sm:h-[150px]" src={images[0] ? images[0]?.asset.url : ""} alt={name}/>
             </Link>
             <div className="flex flex-col justify-between gap-2 sm:mt-3 max-xs:max-w-[150px]">
