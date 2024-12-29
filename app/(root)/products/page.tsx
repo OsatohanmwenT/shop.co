@@ -1,17 +1,18 @@
 import React, {Suspense} from 'react'
-import {ALL_PRODUCT_QUERY} from "@/sanity/lib/queries";
-import {Product} from "@/sanity/types";
-import ProductCard from "@/components/ProductCard";
-import {sanityFetch} from "@/sanity/lib/live";
 import {Skeleton} from "@/components/ui/skeleton";
-import Filters from "@/components/FilterControls/Filters";
 import FilterContainer from "@/components/FilterControls/FilterContainer";
 import ProductsList from "@/components/ProductsList";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
 
 const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: string | string[] | undefined}>}) => {
     const filters = await searchParams;
-    const params = { search: filters.query || null };
+
+    const params = {
+        search: filters.query || null,
+        minPrice: parseFloat(filters.min_price as string) || 0,
+        maxPrice: parseFloat(filters.max_price as string) || null,
+        brands: Array.isArray(filters.brand) ? filters.brand : filters.brand?.split(",") || null,
+    }
 
     return (
         <>

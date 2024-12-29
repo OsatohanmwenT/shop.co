@@ -69,7 +69,6 @@ export type Geopoint = {
 };
 
 export type Filter = {
-    sources: any[];
   _id: string;
   _type: "filter";
   _createdAt: string;

@@ -33,6 +33,8 @@ const Filters = ({filters}: Props) => {
             }
         }
 
+        console.log("Updated Params:", params.toString());
+
         replace(`${pathname}?${params.toString()}`);
     };
 
