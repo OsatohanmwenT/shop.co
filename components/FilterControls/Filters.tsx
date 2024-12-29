@@ -42,7 +42,8 @@ const Filters = ({filters}: Props) => {
         const { name, value, type, checked } = e.target;
 
         if (type === "checkbox") {
-            const existingValues = new URLSearchParams(searchParams).getAll(name);
+            const existingValues = new URLSearchParams(searchParams)
+                .get(name)?.split(",") || [];
             const updatedValues = checked
                 ? [...existingValues, value]
                 : existingValues.filter((val) => val !== value);
