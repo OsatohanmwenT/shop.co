@@ -20,20 +20,10 @@ const Filters = ({filters}: Props) => {
         const params = new URLSearchParams(searchParams);
 
         if (Array.isArray(value)) {
-            if (value.length > 0) {
-                params.set(name, value.join(","));
-            } else {
-                params.delete(name);
-            }
+            value.length ? params.set(name, value.join(",")) : params.delete(name);
         } else {
-            if (value) {
-                params.set(name, value);
-            } else {
-                params.delete(name);
-            }
+            value ? params.set(name, value) : params.delete(name);
         }
-
-        console.log("Updated Params:", params.toString());
 
         replace(`${pathname}?${params.toString()}`);
     };
@@ -62,10 +52,10 @@ const Filters = ({filters}: Props) => {
                             <div className="flex items-center">
                                 <div className="flex items-center p-1 gap-5 justify-between">
                                     <Input onChange={handleFilterChange} placeholder="min." id="min-price" name="min_price" className="border-neutral-300"
-                                           type="text"/>
+                                    />
                                     <p className="text-center">to</p>
                                     <Input onChange={handleFilterChange} placeholder="max." id="max-price" name="max_price" className="border-neutral-300"
-                                           type="text"/>
+                                    />
                                 </div>
                                 <button>
                                     <ChevronRight className="size-5 text-neutral-400" />
