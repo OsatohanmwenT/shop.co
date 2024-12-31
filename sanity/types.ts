@@ -232,7 +232,6 @@ export type Product = {
   }>;
   stock?: number;
   images?: Array<{
-    asset: any;
     asset?: {
       _ref: string;
       _type: "reference";

@@ -78,7 +78,6 @@ const Page = async ({params}: Props) => {
                     </div>
                     <div className="flex items-center mt-2 gap-1">
                         <Rating rating={product.rating} />
-                        <p>{product.rating}/5</p>
                     </div>
                     <Separator className="w-full my-2" />
                     <ExpandableText description={product.description} />
