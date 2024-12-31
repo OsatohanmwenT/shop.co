@@ -3,10 +3,13 @@ import {Product} from "@/sanity/types";
 import {discountPrice, formatPrice} from "@/lib/utils";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
-import {Star} from "lucide-react";
+import {Star, StarHalf} from "lucide-react";
 import {BiCart} from "react-icons/bi";
 
 const ProductCard = ({name, price, images, _id, discount, rating}: Product) => {
+
+    const hasHalfStar = (rating || 0) % 1 !== 0;
+
     return (
         <div className="flex sm:flex-col xl:max-w-[350px] mx-auto items-center justify-between gap-6 sm:gap-1">
             <Link href={{
@@ -33,8 +36,11 @@ const ProductCard = ({name, price, images, _id, discount, rating}: Product) => {
                     {Array.from({length: rating || 0}, (_, i) => i + 1).map((item, i) => (
                         <Star key={i} className="text-yellow-300 fill-yellow-300 size-5" />
                     ))}
+                    {hasHalfStar && (
+                        <StarHalf key="half" className="text-yellow-300 fill-yellow-300 size-5" />
+                    )}
                     {Array.from({length: 5 - (rating || 0)}, (_, i) => i + 1).map((item, i) => (
-                        <Star key={i} className=" size-5" />
+                        <Star key={i} className="text-yellow-300 size-5" />
                     ))}
                 </div>
                 <Button className="text-white font-work-sans sm:order-1 font-semibold sm:w-fit bg-blue-500 rounded-3xl">

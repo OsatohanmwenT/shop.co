@@ -4,6 +4,8 @@ export const BANNER_QUERY = defineQuery(`*[_type=="banner" && defined(title)][0]
 
 export const PRODUCT_QUERY = defineQuery(`*[_type=="product" && defined(slug.current)] | order(_createdAt desc) [0...3] {name, _id, images[]{asset -> {url}}, price, categories[] -> {_id,name}, discount, rating}`)
 
+export const PRODUCT_BY_ID_QUERY = defineQuery(`*[_type=="product" && _id == $id][0]{name, _id, description, images[]{asset -> {url}}, price, categories[] -> {_id,name}, discount, rating}`)
+
 export const ALL_PRODUCT_QUERY = defineQuery(`*[
   _type == "product" &&
   defined(slug.current) &&
@@ -29,7 +31,7 @@ export const ALL_PRODUCT_QUERY = defineQuery(`*[
 
 export const TRENDING_PRODUCT_QUERY = defineQuery(`*[_type=="product" && defined(slug.current) && isTrending ] | order(_createdAt desc) {name, _id, images[]{asset -> {url}}, price, categories[] -> {_id,name}, discount, rating}`)
 
-export const FILTER_QUERY = defineQuery(`*[_type == "filter"] | order(_createdAt desc) {
+export const FILTER_QUERY = defineQuery(`*[_type == "filter"] | order(_createdAt asc) {
     _id,
     slug,
     title,
