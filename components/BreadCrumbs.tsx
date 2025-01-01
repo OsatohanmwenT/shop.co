@@ -12,7 +12,6 @@ const BreadCrumbs = () => {
         { name: 'Home', href: '/' },
         ...pathSegments.map((segment, index) => {
             const isDynamicRoute = /^[0-9a-fA-F-]{36}$/.test(segment); // Matches a UUID
-            console.log(isDynamicRoute, segment);
             return {
                 name: isDynamicRoute ? "Product Details" : segment.replace(/-/g, " "),
                 href: "/" + pathSegments.slice(0, index + 1).join("/"),
