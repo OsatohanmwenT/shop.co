@@ -24,7 +24,7 @@ const Carousel = ({images}: Props) => {
             <div className="flex max-lg:order-2 max-lg:mb-5 lg:flex-col max-lg:items-center max-lg:justify-center gap-2">
                 {images && images.map((image, i) => (
                     <div onMouseEnter={() => setImageIndex(i)} key={i}
-                         className="rounded-xl w-[80px] aspect-square overflow-hidden hover:border-blue-500 border-2">
+                         className={`rounded-xl w-[80px] aspect-square overflow-hidden ${imageIndex === i && "border-blue-500"} hover:border-blue-500 border-2`}>
                         <picture className="w-full h-full">
                             <img className="object-cover object-center" src={image?.asset?.url} alt={image._key}/>
                         </picture>
