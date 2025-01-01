@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import "easymde/dist/easymde.min.css"
 
 const workSans = localFont({
     src: [
@@ -37,31 +38,6 @@ const workSans = localFont({
     ],
     variable: '--font-work-sans',
 })
-
-// const inter = localFont({
-//     src: [
-//         // Regular
-//         {
-//             path: './fonts/Inter_18pt-Medium.ttf',
-//             style: 'normal',
-//             weight: '400',
-//         },
-//         // Bold
-//         {
-//             path: './fonts/Inter_18pt-Bold.ttf',
-//             style: 'normal',
-//             weight: '700',
-//         },
-//
-//         // SemiBold
-//         {
-//             path: './fonts/Inter_18pt-SemiBold.ttf',
-//             style: 'normal',
-//             weight: '600',
-//         },
-//     ],
-//     variable: '--font-inter',
-// });
 
 export const metadata: Metadata = {
   title: "SHOP.CO - Ecommerce website",
