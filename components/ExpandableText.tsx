@@ -15,7 +15,7 @@ const ExpandableText = ({description}: {description: string | undefined}) => {
 
     return (
         <>
-            <p>{summary}</p>
+            <p className="text-sm">{summary}</p>
             <Button className="mt-4" onClick={() => setExpanded(prev => !prev)}>{expanded ? "Show less" : "Show more"}</Button>
         </>
     )

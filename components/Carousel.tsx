@@ -21,7 +21,7 @@ const Carousel = ({images}: Props) => {
 
     return (
         <>
-            <div className="flex max-lg:order-2 max-lg:mb-5 lg:flex-col max-lg:items-center max-lg:justify-center gap-2">
+            <div className="flex items-center max-lg:order-2 max-lg:mb-5 lg:flex-col max-lg:items-center max-lg:justify-center gap-2">
                 {images && images.map((image, i) => (
                     <div onMouseEnter={() => setImageIndex(i)} key={i}
                          className={`rounded-xl w-[80px] aspect-square overflow-hidden ${imageIndex === i && "border-blue-500"} hover:border-blue-500 border-2`}>
@@ -32,16 +32,22 @@ const Carousel = ({images}: Props) => {
                 ))}
             </div>
             <div className="relative h-[400px] max-lg:order-1">
-                <button onClick={handlePrev} className="absolute top-[50%] -translate-y-[50%] lg:-left-16 bg-white rounded-full p-4">
-                    <ArrowLeft />
+                <button onClick={handlePrev} className="absolute top-[50%] z-20 -translate-y-[50%] lg:-left-4 bg-black rounded-full p-3">
+                    <ArrowLeft className="text-white" />
                 </button>
-                <div className="h-[400px] flex justify-center lg:w-[400px] rounded-xl overflow-hidden">
-                    <picture className="lg:mx-auto">
-                        <img className="object-center w-[200px] lg:w-full h-full object-contain" src={images && images[imageIndex]?.asset?.url} alt=""/>
-                    </picture>
+                <div className="flex items-center overflow-hidden justify-center w-full max-w-md">
+                    <div className="flex h-full items-center transition-transform duration-500 ease-in-out"
+                         style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                        {images && images.map((image, i) => (
+                                <picture key={i} className="w-full flex-shrink-0 h-[400px] rounded-xl overflow-hidden">
+                                    <img className="object-center mx-auto w-[300px] lg:w-full h-full object-contain" src={image.asset.url} alt=""/>
+                                </picture>
+                            ))
+                        }
+                    </div>
                 </div>
-                <button onClick={handleNext} className="absolute rounded-full right-0 bg-white p-4 top-[50%] -translate-y-[50%] lg:-right-16">
-                    <ArrowRight />
+                <button onClick={handleNext} className="absolute rounded-full z-20 right-0 bg-black p-3 top-[50%] -translate-y-[50%] lg:-right-4">
+                    <ArrowRight className="text-white" />
                 </button>
             </div>
         </>
