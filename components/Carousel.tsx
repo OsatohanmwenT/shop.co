@@ -20,7 +20,7 @@ const Carousel = ({images}: Props) => {
     }
 
     return (
-        <div className="flex flex-col gap-6">
+        <>
             <div className="flex max-lg:order-2 max-lg:mb-5 lg:flex-col max-lg:items-center max-lg:justify-center gap-2">
                 {images && images.map((image, i) => (
                     <div onMouseEnter={() => setImageIndex(i)} key={i}
@@ -44,7 +44,7 @@ const Carousel = ({images}: Props) => {
                     <ArrowRight />
                 </button>
             </div>
-        </div>
+        </>
     )
 }
 export default Carousel

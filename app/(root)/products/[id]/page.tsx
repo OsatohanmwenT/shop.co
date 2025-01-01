@@ -48,7 +48,7 @@ const Page = async ({params}: Props) => {
         <main className="min-h-screen w-full font-work-sans border-t-[1px] p-5 flex">
             <section className="flex justify-between w-full max-lg:flex-col">
                 <Carousel images={product.images} />
-                <div className="flex-1 max-w-[600px]">
+                <div className="flex-1 order-3 max-w-[600px]">
                     <h1 className="text-2xl font-bold">{product.name}</h1>
                     <div className="flex mt-4 items-center">
                         {product.discount ? (
