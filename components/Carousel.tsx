@@ -40,7 +40,7 @@ const Carousel = ({images}: Props) => {
                          style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
                         {images && images.map((image, i) => (
                                 <picture key={i} className="w-full flex-shrink-0 h-[400px] rounded-xl overflow-hidden">
-                                    <img className="object-center mx-auto w-[300px] lg:w-full h-full object-contain" src={image.asset.url} alt=""/>
+                                    <img className="object-center mx-auto w-[270px] lg:w-full h-full object-contain" src={image.asset.url} alt=""/>
                                 </picture>
                             ))
                         }
