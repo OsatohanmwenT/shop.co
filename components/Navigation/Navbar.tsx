@@ -28,10 +28,10 @@ const Navbar = async ({query}: {query?: string}) => {
                         </button>
                     </Form>
                     <Link className="mr-2 relative max-xs:hidden" href="/">
-                        <span>
-                            <span></span>
+                        <span className="text-white flex items-center justify-center absolute -top-2 overflow-hidden p-1 -right-2 hover:bg-blue-500 bg-black rounded-full w-6 h-6">
+                            <span className="bg-inherit text-sm">1</span>
                         </span>
-                        <ShoppingCartIcon />
+                        <ShoppingCartIcon className="size-8" />
                     </Link>
                     <div className="flex max-xs:hidden items-center gap-5">
                         {session?.user && session ? (

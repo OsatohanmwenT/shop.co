@@ -1,5 +1,8 @@
-import React from 'react'
+"use client"
+
+import React, {useState} from 'react'
 import {Button} from "@/components/ui/button";
+import {Loader} from "lucide-react";
 
 interface Props {
     children: React.ReactNode
@@ -7,9 +10,20 @@ interface Props {
 }
 
 const AddToCartButton = ({ children, className }:Props) => {
+    const [loading, setLoading] = useState(false)
+    const handleAddToCart = async() => {
+        setLoading(true);
+
+    }
+
     return (
-        <Button className={className}>
-            {children}
+        <Button onClick={handleAddToCart} className={className}>
+            {loading ?
+                <>
+                    <Loader className="size-6 mr-1 animate-spin" />
+                    <span>Adding...</span>
+                </>
+                : children}
         </Button>
     )
 }
