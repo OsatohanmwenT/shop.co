@@ -8,6 +8,9 @@ import type {Metadata} from 'next'
 import ExpandableText from "@/components/ExpandableText";
 import Rating from "@/components/Rating";
 import Carousel from "@/components/Carousel";
+import {Button} from "@/components/ui/button";
+import AddToCartButton from "@/components/AddToCartButton";
+import {BiCart} from "react-icons/bi";
 
 interface Props {
     params: Promise<{id: string}>
@@ -69,10 +72,14 @@ const Page = async ({params}: Props) => {
                     <div className="flex items-center mt-2 gap-1">
                         <Rating rating={product.rating} />
                     </div>
+                    <AddToCartButton className="rounded-sm text-black mt-4 mx-auto bg-yellow-300">
+                        <BiCart className="size-6 fill-black text-black" />Add to Cart
+                    </AddToCartButton>
                     <Separator className="w-full my-2" />
                     <ExpandableText description={product.description} />
                 </div>
             </section>
+            <section></section>
         </main>
     )
 }

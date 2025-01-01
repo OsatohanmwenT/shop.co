@@ -27,7 +27,10 @@ const Navbar = async ({query}: {query?: string}) => {
                             <SearchIcon className="size-5"/>
                         </button>
                     </Form>
-                    <Link className="mr-2 max-xs:hidden" href="/">
+                    <Link className="mr-2 relative max-xs:hidden" href="/">
+                        <span>
+                            <span></span>
+                        </span>
                         <ShoppingCartIcon />
                     </Link>
                     <div className="flex max-xs:hidden items-center gap-5">
