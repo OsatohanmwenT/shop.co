@@ -1,8 +1,7 @@
-import React, {Suspense} from 'react'
+import React from 'react'
 import Hero from "@/components/landing/Hero";
 import Products from "@/components/landing/Products";
 import Image from "next/image";
-import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
 import {SanityLive} from "@/sanity/lib/live";
 
 const Page = () => {
