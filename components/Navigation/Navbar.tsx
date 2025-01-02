@@ -2,14 +2,15 @@ import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import {auth} from "@/auth";
-import {SearchIcon, ShoppingCartIcon} from "lucide-react";
+import {SearchIcon} from "lucide-react";
 import Form from "next/form";
 import Menu from "@/components/Menu";
 import ProfileButton from "@/components/ProfileButton";
+import Cart from "@/components/Cart";
 
 
 const Navbar = async ({query}: {query?: string}) => {
-    const session = await auth();
+    const session = await auth()
 
     return (
         <header className="px-5 py-4 font-work-sans bg-white border-b-2 shadow-sm text-black">
@@ -27,12 +28,7 @@ const Navbar = async ({query}: {query?: string}) => {
                             <SearchIcon className="size-5"/>
                         </button>
                     </Form>
-                    <Link className="mr-2 relative max-xs:hidden" href="/">
-                        <span className="text-white flex items-center justify-center absolute -top-2 overflow-hidden p-1 -right-2 hover:bg-blue-500 bg-black rounded-full w-6 h-6">
-                            <span className="bg-inherit text-sm">1</span>
-                        </span>
-                        <ShoppingCartIcon className="size-8" />
-                    </Link>
+                    <Cart />
                     <div className="flex max-xs:hidden items-center gap-5">
                         {session?.user && session ? (
                             <>

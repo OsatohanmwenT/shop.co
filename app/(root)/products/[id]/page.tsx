@@ -72,7 +72,7 @@ const Page = async ({params}: Props) => {
                     <div className="flex items-center mt-2 gap-1">
                         <Rating rating={product.rating} />
                     </div>
-                    <AddToCartButton className="rounded-sm text-black hover:text-white mt-4 mx-auto bg-yellow-300">
+                    <AddToCartButton _id={product._id} className="rounded-sm text-black hover:text-white mt-4 mx-auto bg-yellow-300">
                         <BiCart className="size-6 fill-black text-black" />Add to Cart
                     </AddToCartButton>
                     <Separator className="w-full my-2" />

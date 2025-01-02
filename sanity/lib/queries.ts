@@ -40,3 +40,5 @@ export const FILTER_QUERY = defineQuery(`*[_type == "filter"] | order(_createdAt
     options,
     "sources": *[_type == ^.source] {_id,name}
 }`)
+
+export const CART_QUERY = defineQuery(`*[_type == "cart" && _id == $cartId][0]{_id,cartItems}`)

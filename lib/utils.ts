@@ -15,3 +15,7 @@ export function discountPrice(mainPrice: number | undefined, discount: number | 
   const discountAmount = mainPrice - (mainPrice * discount/100);
   return `$${discountAmount.toFixed(2)}`;
 }
+
+export const generateCartId = (): string => {
+  return `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+};
