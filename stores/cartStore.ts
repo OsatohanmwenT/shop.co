@@ -1,5 +1,3 @@
-"use client"
-
 import { create } from "zustand";
 import { client } from "@/sanity/lib/client";
 import {addToCart, removeFromCart} from "@/lib/actions";
@@ -30,32 +28,29 @@ export const useCartStore = create<CartState>((set,get) => ({
     },
 
     incrementQuantity: async (productId, cartId) => {
-        try {
-            await addToCart(productId, cartId); // Call your server function
-            const updatedCart = await client.withConfig({useCdn:false}).fetch(CART_QUERY, { cartId });
-            const updatedQuantities = updatedCart.cartItems.reduce((acc: Record<string, number>, item: any) => {
-                acc[item.product._ref] = item.quantity;
-                return acc;
-            }, {});
+        const currentQuantities = { ...get().quantities };
+        console.log("Before increment:", currentQuantities);
+        set({ quantities: { ...currentQuantities, [productId]: (currentQuantities[productId] || 0) + 1 } }); // Optimistic update
 
-            set({ quantities: updatedQuantities });
+        try {
+            console.log("Incrementing quantity for product:", productId);
+            await addToCart(productId, cartId); // Sync with backend
         } catch (error) {
             console.error("Error incrementing quantity:", error);
+            set({ quantities: currentQuantities }); // Revert on failure
         }
     },
 
     decrementQuantity: async (productId, cartId) => {
-        try {
-            await removeFromCart(productId, cartId);
-            const updatedCart = await client.withConfig({useCdn:false}).fetch(CART_QUERY, { cartId });
-            const updatedQuantities = updatedCart.cartItems.reduce((acc: Record<string, number>, item: any) => {
-                acc[item.product._ref] = item.quantity;
-                return acc;
-            }, {});
+        const currentQuantities = { ...get().quantities };
+        const newQuantity = Math.max((currentQuantities[productId] || 0) - 1, 0);
+        set({ quantities: { ...currentQuantities, [productId]: newQuantity } }); // Optimistic update
 
-            set({ quantities: updatedQuantities });
+        try {
+            await removeFromCart(productId, cartId); // Sync with backend
         } catch (error) {
             console.error("Error decrementing quantity:", error);
+            set({ quantities: currentQuantities }); // Revert on failure
         }
     },
 }));
