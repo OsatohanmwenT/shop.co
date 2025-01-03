@@ -32,6 +32,7 @@ export const useCartStore = create<CartState>((set,get) => ({
         set({ quantities: { ...currentQuantities, [productId]: (currentQuantities[productId] || 0) + 1 } }); // Optimistic update
 
         try {
+            console.log("Incrementing quantity for product:", productId);
             await addToCart(productId, cartId); // Sync with backend
         } catch (error) {
             console.error("Error incrementing quantity:", error);
