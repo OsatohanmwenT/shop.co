@@ -1,3 +1,5 @@
+"use client"
+
 import { create } from "zustand";
 import { client } from "@/sanity/lib/client";
 import {addToCart, removeFromCart} from "@/lib/actions";
