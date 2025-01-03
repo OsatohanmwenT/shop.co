@@ -29,6 +29,7 @@ export const useCartStore = create<CartState>((set,get) => ({
 
     incrementQuantity: async (productId, cartId) => {
         const currentQuantities = { ...get().quantities };
+        console.log("Before increment:", currentQuantities);
         set({ quantities: { ...currentQuantities, [productId]: (currentQuantities[productId] || 0) + 1 } }); // Optimistic update
 
         try {

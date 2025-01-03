@@ -18,6 +18,8 @@ const AddToCartButton = ({ _id, children, className }:Props) => {
     const { quantities, incrementQuantity, decrementQuantity } = useCartStore();
     const quantity = quantities[_id] || 0;
 
+    console.log("Rendering AddToCartButton:", { _id, quantity, quantities });
+
     const handleAddToCart = async () => {
         setIsActionLoading(true);
         await incrementQuantity(_id, cartId);
