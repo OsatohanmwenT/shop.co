@@ -32,7 +32,7 @@ const ProductCard = ({name, price, images, _id, discount, rating, stock}: Produc
                 <div className="justify-self-end flex gap-2 sm:order-3 items-center">
                     <Rating rating={rating} />
                 </div>
-                <AddToCartButton max={stock} _id={_id} className="text-white font-work-sans sm:order-1 disabled:bg-neutral-200 font-semibold sm:w-fit bg-blue-500 rounded-3xl">
+                <AddToCartButton max={stock} _id={_id} className="text-white font-work-sans sm:order-1 font-semibold sm:w-fit bg-blue-500 rounded-3xl">
                     <BiCart className="size-5" />Add to cart
                 </AddToCartButton>
             </div>

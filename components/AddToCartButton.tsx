@@ -49,7 +49,7 @@ const AddToCartButton = ({ _id, children, className, max }:Props) => {
                     {isActionLoading ?
                         <>
                             <Loader className="size-6 mr-1 animate-spin" />
-                            <span>Adding...</span>
+                            <span>Loading...</span>
                         </>
                         : children}
             </Button>
