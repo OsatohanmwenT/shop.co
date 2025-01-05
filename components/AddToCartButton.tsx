@@ -9,10 +9,11 @@ import {useCartStore} from "@/stores/cartStore";
 interface Props {
     children: React.ReactNode
     className: string
-    _id: string
+    _id: string;
+    max: number | undefined;
 }
 
-const AddToCartButton = ({ _id, children, className }:Props) => {
+const AddToCartButton = ({ _id, children, className, max }:Props) => {
     const cartId = useCartId();
     const [isActionLoading, setIsActionLoading] = useState(false)
     const { quantities, incrementQuantity, decrementQuantity } = useCartStore();
@@ -37,8 +38,8 @@ const AddToCartButton = ({ _id, children, className }:Props) => {
                     <button onClick={handleRemoveFromCart} className="flex border-r-2 hover:bg-black hover:text-white items-center justify-center p-2">
                         <Minus className="size-6" />
                     </button>
-                    <p className="px-8 text-lg">{quantity}</p>
-                    <button onClick={handleAddToCart} className="flex border-l-2 items-center hover:bg-black hover:text-white justify-center p-2">
+                    <p className="px-8 text-lg">{quantity === max ? "MAX" : quantity}</p>
+                    <button disabled={quantity === max} onClick={handleAddToCart} className="flex border-l-2 items-center hover:bg-black hover:text-white justify-center p-2">
                         <Plus className="size-6"/>
                     </button>
                 </div>
