@@ -22,11 +22,13 @@ const Filters = ({DBFilters}: Props) => {
         const { name, value, type, checked } = e.target;
 
         if (type === "checkbox") {
-            const currentValues = Array.isArray(filters[name]) ? filters[name] : [];
+            const currentValues = Array.isArray(filters[name]) ? filters[name] : filters[name] ? [filters[name]] : [];
+
             const updatedValues = checked
                 ? [...currentValues, value]
                 : currentValues.filter((v) => v !== value);
 
+        console.log(currentValues, filters[name])
             setFilter(name, updatedValues);
         } else {
             setFilter(name, value);
@@ -72,7 +74,7 @@ const Filters = ({DBFilters}: Props) => {
                                             id={`${filter.slug?.current}_${option.name || option}`}
                                             name={`${filter.slug?.current}`}
                                             value={option.name || option}
-                                            checked={(filters[filter.slug.current] || []).includes(option.name)}
+                                            checked={(filters[filter.slug?.current] || []).includes(option.name || option)}
                                         />
                                         <label htmlFor={`${filter.slug?.current}_${option.name || option}`}
                                                className="ml-2">

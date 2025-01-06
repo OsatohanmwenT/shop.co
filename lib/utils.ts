@@ -30,7 +30,6 @@ export const getFiltersFromURL = (searchParams: URLSearchParams) => {
 
 export const updateURL = (pathname: string, filters: Record<string, string | string[]>, replace: (url: string) => void) => {
   const params = new URLSearchParams();
-  console.log(filters)
 
   Object.entries(filters).forEach(([key, value]) => {
     if (Array.isArray(value)) {
