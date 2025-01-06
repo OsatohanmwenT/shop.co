@@ -5,6 +5,6 @@ import Filters from "@/components/FilterControls/Filters";
 
 const FilterContainer = async () => {
     const filters = await client.withConfig({ useCdn: false }).fetch(FILTER_QUERY)
-    return <Filters filters={filters} />
+    return <Filters DBFilters={filters} />
 }
 export default FilterContainer

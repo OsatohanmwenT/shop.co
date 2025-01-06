@@ -19,3 +19,25 @@ export function discountPrice(mainPrice: number | undefined, discount: number | 
 export const generateCartId = (): string => {
   return `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 };
+
+export const getFiltersFromURL = (searchParams: URLSearchParams) => {
+  const filters: Record<string, string | string[]> = {};
+  searchParams.forEach((value, key) => {
+    filters[key] = value.includes(",") ? value.split(",") : value;
+  });
+  return filters;
+};
+
+export const updateURL = (pathname: string, filters: Record<string, string | string[]>, replace: (url: string) => void) => {
+  const params = new URLSearchParams();
+
+  Object.entries(filters).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      value.length ? params.set(key, value.join(",")) : params.delete(key);
+    } else {
+      value ? params.set(key, value as string) : params.delete(key);
+    }
+  });
+
+  replace(`${pathname}?${params.toString()}`);
+};
