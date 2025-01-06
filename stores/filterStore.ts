@@ -17,5 +17,10 @@ export const useFilterStore = create<FilterState>((set) => ({
                 [name]: value,
             },
         })),
-    initializeFromURL: (filters) => set({ ...filters }),
+    initializeFromURL: (filters) =>
+        set(() => ({
+            filters: {
+                ...filters,
+            },
+        })),
 }));
