@@ -28,7 +28,6 @@ const Filters = ({DBFilters}: Props) => {
                 ? [...currentValues, value]
                 : currentValues.filter((v) => v !== value);
 
-        console.log(currentValues, filters[name])
             setFilter(name, updatedValues);
         } else {
             setFilter(name, value);
