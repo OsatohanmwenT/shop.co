@@ -39,7 +39,7 @@ const AddToCartButton = ({ _id, children, className, max }:Props) => {
                     <button onClick={handleRemoveFromCart} className="flex border-r-2 disabled:bg-neutral-200  hover:bg-black hover:text-white items-center justify-center p-2">
                         <Minus className="size-6" />
                     </button>
-                    <p className="px-8 text-lg">{quantity === max ? `max ${max}` : quantity}</p>
+                    <p className="px-8 text-sm md:text-lg">{quantity === max ? `max ${max}` : quantity}</p>
                     <button disabled={quantity === max} onClick={handleAddToCart} className="flex border-l-2 disabled:bg-neutral-200 disabled:hover:text-black  items-center hover:bg-black hover:text-white justify-center p-2">
                         <Plus className="size-6"/>
                     </button>
