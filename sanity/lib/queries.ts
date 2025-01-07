@@ -18,7 +18,7 @@ export const ALL_PRODUCT_QUERY = defineQuery(`*[
   (!defined($minPrice) || price >= $minPrice) &&
   (!defined($maxPrice) || price <= $maxPrice) &&
   (!defined($brands) || brand->name in $brands)
-  ] | order(_createdAt desc)
+  ][$start...$end] | order(_createdAt desc)
 {
   name,
   _id,
@@ -43,3 +43,17 @@ export const FILTER_QUERY = defineQuery(`*[_type == "filter"] | order(_createdAt
 }`)
 
 export const CART_QUERY = defineQuery(`*[_type == "cart" && _id == $cartId][0]{_id,cartItems}`)
+
+export const COUNT_QUERY = defineQuery(`count(*[
+  _type == "product" &&
+  defined(slug.current) &&
+  (
+    !defined($search) || 
+    name match $search || 
+    (categories[]->name match $search) || 
+    (tags[] match $search)
+  ) &&
+  (!defined($minPrice) || price >= $minPrice) &&
+  (!defined($maxPrice) || price <= $maxPrice) &&
+  (!defined($brands) || brand->name in $brands)
+  ])`)
