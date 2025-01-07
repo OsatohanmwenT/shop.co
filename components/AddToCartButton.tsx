@@ -33,15 +33,14 @@ const AddToCartButton = ({ _id, children, className, max }:Props) => {
 
     return (
         <>
-            <p className="font-work-sans">{quantity} out of {max} left</p>
             {quantity > 0 ? (
                 <div className="flex items-center overflow-hidden w-fit mt-2 border-2 rounded-sm">
                     <button onClick={handleRemoveFromCart} className="flex border-r-2 disabled:bg-neutral-200  hover:bg-black hover:text-white items-center justify-center p-2">
-                        <Minus className="size-6" />
+                        <Minus className="size-5 xs:size-6" />
                     </button>
-                    <p className="px-8 text-sm md:text-lg">{quantity === max ? `max ${max}` : quantity}</p>
+                    <p className="px-3 xs:px-8 text-sm md:text-lg">{quantity === max ? `max ${max}` : quantity}</p>
                     <button disabled={quantity === max} onClick={handleAddToCart} className="flex border-l-2 disabled:bg-neutral-200 disabled:hover:text-black  items-center hover:bg-black hover:text-white justify-center p-2">
-                        <Plus className="size-6"/>
+                        <Plus className="size-5 xs:size-6"/>
                     </button>
                 </div>
             ) : (
