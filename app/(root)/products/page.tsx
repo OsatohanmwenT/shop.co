@@ -10,7 +10,7 @@ import {COUNT_QUERY} from "@/sanity/lib/queries";
 const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: string | string[] | undefined}>}) => {
     const filters = await searchParams;
     const currentPage = parseInt(filters.page as string || "1", 10);
-    const pageSize = 1;
+    const pageSize = 10;
 
     const params = {
         search: filters.query || null,
