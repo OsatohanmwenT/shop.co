@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="py-24 px-4 md:px-8 lg:px-16 xl:32 2xl:px-64 bg-black text-white font-work-sans text-sm mt-24">
+        <footer className="py-16 px-4 md:px-8 lg:px-16 xl:32 2xl:px-64 bg-black text-white font-work-sans text-sm">
             {/* TOP */}
             <div className="flex flex-col max-sm:items-center max-sm:text-center md:flex-row justify-between gap-24">
                 {/* LEFT */}

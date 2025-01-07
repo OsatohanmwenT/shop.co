@@ -3,6 +3,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 import FilterContainer from "@/components/FilterControls/FilterContainer";
 import ProductsList from "@/components/ProductsList";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
+import Pagination from "@/components/Pagination";
 
 const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: string | string[] | undefined}>}) => {
     const filters = await searchParams;
@@ -18,16 +19,17 @@ const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: strin
         <>
             <main className="min-h-screen w-full border-t-[1px]">
                 <div className="grid md:products-grid_system">
-                    <div className="bg-white hidden md:block border-r-[1px] h-screen">
+                    <div className="bg-white hidden md:block border-r-[1px] h-full min-h-screen">
                         <Suspense fallback={<Skeleton className="h-full" />}>
                             <FilterContainer />
                         </Suspense>
                     </div>
-                    <div className="p-5 min-h-screen bg-white">
+                    <div className="p-5 bg-white">
                         Products section
                         <Suspense fallback={<ProductCardSkeleton />}>
                             <ProductsList params={params} />
                         </Suspense>
+                        <Pagination />
                     </div>
                 </div>
             </main>
