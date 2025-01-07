@@ -42,7 +42,7 @@ const Pagination = ({count, pageSize, currentPage}: Props) => {
             <Button
                 onClick={() => createPageUrl(currentPage + 1)}
                 disabled={currentPage >= totalPages}
-                variant="ghost" className="disabled:cursor-not-allowed disabled:pointer-events-auto">Next <ChevronRight className="size-5"/>
+                variant="ghost">Next <ChevronRight className="size-5"/>
             </Button>
         </div>
     )
