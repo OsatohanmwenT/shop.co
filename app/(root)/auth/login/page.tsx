@@ -1,8 +1,8 @@
 import React from 'react'
-import {auth, signIn} from "@/auth";
 import {Button} from "@/components/ui/button";
 import {FaGithub, FaGoogle} from "react-icons/fa";
 import {redirect} from "next/navigation";
+import {auth, signIn} from "@/auth";
 
 const Page = async () => {
     const session = await auth();

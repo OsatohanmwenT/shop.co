@@ -8,13 +8,11 @@ const ProductsList = async ({params}: any) => {
     const { data: products } = await sanityFetch({ query: ALL_PRODUCT_QUERY, params })
 
     return (
-        <div className="p-5 min-h-screen bg-white">
+        <div className="p-5 min-h-screen">
             {products.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     {products.map((product: Product) => (
-                        <div key={product._id} className="py-5 border-b-[1px]">
-                            <ProductCard {...product} />
-                        </div>
+                        <ProductCard key={product._id} {...product} />
                     ))}
                 </div>
             ) : (

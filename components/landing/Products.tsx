@@ -11,19 +11,17 @@ const Products = async () => {
 
     return (
         <>
-            <section className="md:py-10 px-10 mb-5 md:px-6 xl:px-20 ">
-                <p className="text-center text-3xl mb-2">New Collection</p>
-                <Separator className="mb-5" />
+            <section className="py-5 md:py-10 px-4 mb-5 md:px-6 xl:px-20 ">
+                <p className="text-3xl text-center font-work-sans font-bold mb-4">New Collection</p>
                 <div className="grid grid-cols-1 max-sm:text-center sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {products.map((product: Product) => (
                         <ProductCard key={product._id} {...product} />
                     ))}
                 </div>
             </section>
-            <section className="md:py-10 px-10 mb-5 md:px-6 xl:px-20 w-full">
-                <p className="text-center text-3xl mb-2">Trending</p>
-                <Separator className="mb-5" />
-                <div className="grid grid-cols-1 max-sm:text-center sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <section className="md:py-10 px-4 mb-5 md:px-6 xl:px-20 w-full">
+                <p className="text-3xl text-center font-work-sans font-bold mb-4">Trending</p>
+                <div className="grid grid-cols-1 max-sm:text-center sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     {trendingProducts.map((product: Product) => (
                         <ProductCard key={product._id} {...product} />
                     ))}

@@ -57,3 +57,15 @@ export const COUNT_QUERY = defineQuery(`count(*[
   (!defined($maxPrice) || price <= $maxPrice) &&
   (!defined($brands) || brand->name in $brands)
   ])`)
+
+export const USER_BY_ID_QUERY = defineQuery(`
+*[_type == "user" && id == $id][0]{
+_id,
+id,
+name,
+username,
+email,
+image,
+bio
+}
+`)

@@ -14,6 +14,19 @@ body {
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
 @layer utilities {
   .no-result {
     @apply text-black text-sm font-normal;
@@ -23,10 +36,10 @@ body {
     @apply flex justify-between items-center;
   }
   .banner_container {
-    @apply w-full min-h-[60vh] sm:min-h-[530px] bg-neutral-100 flex justify-center items-center md:py-10 md:px-6;
+    @apply w-full min-h-[60vh] sm:min-h-[530px] bg-neutral-900 flex justify-center items-center md:py-10 md:px-6;
   }
   .sign-in_container {
-    @apply w-full flex items-center justify-center flex-col gap-5;
+    @apply w-full min-h-[70vh] flex items-center justify-center flex-col gap-5;
   }
   .search-form {
     @apply bg-neutral-100 w-full pl-2 overflow-hidden xs:pl-3 pr-1 py-1 rounded-3xl flex items-center gap-1;
@@ -47,12 +60,12 @@ body {
    @apply font-work-sans font-bold text-6xl text-black
   }
   .sub-heading {
-    @apply font-medium lg:text-[20px] text-neutral-700 max-w-lg break-words;
+    @apply font-medium text-sm lg:text-base text-neutral-500 max-w-lg break-words;
   }
 
   /*Product card*/
   .product-card_heading {
-    @apply max-sm:line-clamp-2 text-sm hover:underline active:underline;
+    @apply max-sm:line-clamp-2 font-work-sans text-start text-sm;
   }
   .product-card_desc {
     @apply  line-clamp-1 break-all font-work-sans text-neutral-400 text-xs;

@@ -11,8 +11,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {signOut} from "next-auth/react";
 
-
-
 interface Props {
     image: string | null | undefined;
     name: string | null | undefined;
@@ -31,7 +29,7 @@ const ProfileButton = ({image,name}: Props) => {
             <DropdownMenu onOpenChange={setIsOpen} open={isOpen}>
                 <DropdownMenuTrigger asChild>
                     <Avatar className="size-10">
-                        <AvatarImage src={image || ""} alt={name || "user guest"}/>
+                        <AvatarImage className="w-[40px] aspect-square" src={image || ""} alt={name || "user guest"}/>
                         <AvatarFallback>AV</AvatarFallback>
                     </Avatar>
                 </DropdownMenuTrigger>

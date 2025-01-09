@@ -25,7 +25,7 @@ const Pagination = ({count, pageSize, currentPage}: Props) => {
     }
 
     return (
-        <div className="flex items-center font-work-sans justify-center gap-3 xs:gap-6">
+        <div className="flex items-center mb-5 font-work-sans justify-center gap-3 xs:gap-6">
             <Button
                 onClick={() => createPageUrl(currentPage - 1)}
                 disabled={currentPage <= 1}

@@ -6,6 +6,7 @@ import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
 import Pagination from "@/components/Pagination";
 import {sanityFetch} from "@/sanity/lib/live";
 import {COUNT_QUERY} from "@/sanity/lib/queries";
+import {Button} from "@/components/ui/button";
 
 const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: string | string[] | undefined}>}) => {
     const filters = await searchParams;
@@ -25,15 +26,14 @@ const Page = async ({searchParams}: {searchParams: Promise<{[key: string]: strin
 
     return (
         <>
-            <main className="min-h-screen w-full border-t-[1px]">
+            <main className="min-h-screen bg-neutral-100 w-full border-t-[1px]">
                 <div className="grid md:products-grid_system">
                     <div className="bg-white hidden md:block border-r-[1px] h-full min-h-screen">
                         <Suspense fallback={<Skeleton className="h-full" />}>
                             <FilterContainer />
                         </Suspense>
                     </div>
-                    <div className="p-5 bg-white">
-                        Products section
+                    <div>
                         <Suspense fallback={<ProductCardSkeleton />}>
                             <ProductsList params={params} />
                         </Suspense>

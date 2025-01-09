@@ -17,13 +17,13 @@ const Cart = () => {
     }, [getCart]);
 
     return (
-        <Link className="mr-2 relative max-xs:hidden" href="/">
+        <Link className="mr-2 relative" href="/cart">
             {totalItems > 0 &&
-                <span className="text-white flex items-center justify-center absolute -top-2 overflow-hidden p-1 -right-2 hover:bg-blue-500 bg-black rounded-full w-6 h-6">
-                    <span className="bg-inherit text-sm">{totalItems}</span>
+                <span className="text-white flex items-center justify-center absolute -top-3 overflow-hidden p-1 -right-3 bg-blue-500 rounded-full w-6 h-6">
+                    <span className="bg-inherit text-xs">{totalItems}</span>
                 </span>
             }
-            <ShoppingCartIcon className="size-8" />
+            <ShoppingCartIcon className="size-6" />
         </Link>
     )
 }
