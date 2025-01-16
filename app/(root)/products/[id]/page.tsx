@@ -5,11 +5,11 @@ import {Separator} from "@/components/ui/separator";
 import {Product} from "@/sanity/types";
 import {discountPrice, formatPrice} from "@/lib/utils";
 import type {Metadata} from 'next'
-import ExpandableText from "@/components/ExpandableText";
+import ExpandableText from "@/components/Products/ExpandableText";
 import Rating from "@/components/Rating";
-import Carousel from "@/components/Carousel";
+import Carousel from "@/components/Products/Carousel";
 import {Button} from "@/components/ui/button";
-import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/Products/AddToCartButton";
 import {BiCart} from "react-icons/bi";
 
 interface Props {

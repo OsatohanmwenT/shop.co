@@ -1,6 +1,6 @@
 import React from 'react'
 import {Product} from "@/sanity/types";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/Products/ProductCard";
 import {sanityFetch} from "@/sanity/lib/live";
 import {ALL_PRODUCT_QUERY} from "@/sanity/lib/queries";
 

@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react'
 import {Skeleton} from "@/components/ui/skeleton";
 import FilterContainer from "@/components/FilterControls/FilterContainer";
-import ProductsList from "@/components/ProductsList";
+import ProductsList from "@/components/Products/ProductsList";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
 import Pagination from "@/components/Pagination";
 import {sanityFetch} from "@/sanity/lib/live";

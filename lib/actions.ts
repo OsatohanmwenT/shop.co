@@ -2,7 +2,7 @@
 
 import { writeClient } from "@/sanity/lib/write-client";
 import { client } from "@/sanity/lib/client";
-import { CART_QUERY } from "@/sanity/lib/queries";
+import {CART_BY_USER_QUERY} from "@/sanity/lib/queries";
 
 interface CartItem {
     _key: string;
@@ -15,13 +15,18 @@ interface CartItem {
 
 const updateCartItems = async (cartId: string, updateFn: (cartItems: CartItem[]) => CartItem[]) => {
     try {
-        const existingCart = await client.withConfig({ useCdn: false }).fetch(CART_QUERY, { cartId });
+        const existingCart = await client.withConfig({ useCdn: false }).fetch(CART_BY_USER_QUERY, { cartId });
 
         if (existingCart) {
             const updatedCartItems = updateFn(existingCart.cartItems);
             await writeClient.patch(cartId).set({ cartItems: updatedCartItems }).commit();
         } else {
-            throw new Error("Cart not found");
+            const newCartItems = updateFn([]);
+            await writeClient.create({
+                _id: cartId,
+                _type: "cart",
+                cartItems: newCartItems,
+            });
         }
     } catch (error: any) {
         console.error("Error updating cart items:", error.message);
@@ -69,10 +74,8 @@ export const removeFromCart = async (_id: string, cartId: string) => {
 };
 
 export const linkCartToUser = async (cartId: string, userId: string) => {
-    try {
-        return await writeClient.patch(cartId).set({ userId }).commit();
-    } catch (error: any) {
-        console.error("Error linking cart to user:", error.message);
-        throw new Error("Failed to link cart to user.");
-    }
+    const existingCart = await client.fetch(CART_BY_USER_QUERY, { cartId });
+    if (existingCart && existingCart.user?._ref === userId) return;
+
+    await writeClient.patch(cartId).set({ user: { _type: "reference", _ref: userId } }).commit();
 };

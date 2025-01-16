@@ -4,7 +4,7 @@ import {discountPrice, formatPrice} from "@/lib/utils";
 import Link from "next/link";
 import {BiCart} from "react-icons/bi";
 import Rating from "@/components/Rating";
-import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/Products/AddToCartButton";
 
 const ProductCard = ({name, price, images, _id, discount, rating, stock}: Product) => {
     return (

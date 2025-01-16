@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import "easymde/dist/easymde.min.css"
+import {SessionProvider} from "next-auth/react";
 
 const workSans = localFont({
     src: [
@@ -60,12 +61,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={` ${workSans.variable}`}
-      >
-        {children}
-      </body>
-    </html>
+      <SessionProvider>
+        <html lang="en">
+          <body
+            className={` ${workSans.variable}`}
+          >
+            {children}
+          </body>
+        </html>
+      </SessionProvider>
   );
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 import {auth} from "@/auth";
 import {SearchIcon} from "lucide-react";
 import Form from "next/form";
-import Menu from "@/components/Menu";
+import Menu from "@/components/Navigation/Menu";
 import ProfileButton from "@/components/ProfileButton";
 import Cart from "@/components/Cart";
 

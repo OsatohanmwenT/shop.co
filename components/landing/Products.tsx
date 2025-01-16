@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/Products/ProductCard";
 import {client} from "@/sanity/lib/client";
 import {PRODUCT_QUERY, TRENDING_PRODUCT_QUERY} from "@/sanity/lib/queries";
 import {Product} from "@/sanity/types";

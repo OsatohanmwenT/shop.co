@@ -1,6 +1,6 @@
 import React from 'react'
 import ControlDrawer from "@/components/FilterControls/ControlDrawer";
-import BreadCrumbs from "@/components/BreadCrumbs";
+import BreadCrumbs from "@/components/Navigation/BreadCrumbs";
 
 const ControlsNav = () => {
 

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { client } from "@/sanity/lib/client";
 import {addToCart, removeFromCart} from "@/lib/actions";
-import {CART_QUERY} from "@/sanity/lib/queries";
+import {CART_BY_USER_QUERY} from "@/sanity/lib/queries";
 
 interface CartState {
     quantities: Record<string, number>;
@@ -15,7 +15,7 @@ export const useCartStore = create<CartState>((set,get) => ({
 
     getCart: async (cartId) => {
         try {
-            const cart = await client.withConfig({useCdn:false}).fetch(CART_QUERY, { cartId });
+            const cart = await client.withConfig({useCdn:false}).fetch(CART_BY_USER_QUERY, { cartId });
             const quantities = cart?.cartItems.reduce((acc: Record<string, number>, item: any) => {
                 acc[item.product._ref] = item.quantity;
                 return acc;
@@ -33,7 +33,6 @@ export const useCartStore = create<CartState>((set,get) => ({
         set({ quantities: { ...currentQuantities, [productId]: (currentQuantities[productId] || 0) + 1 } }); // Optimistic update
 
         try {
-            console.log("Incrementing quantity for product:", productId);
             await addToCart(productId, cartId); // Sync with backend
         } catch (error) {
             console.error("Error incrementing quantity:", error);

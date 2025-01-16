@@ -1,5 +1,5 @@
 import React from 'react'
-import ControlsNav from "@/components/ControlsNav";
+import ControlsNav from "@/components/FilterControls/ControlsNav";
 
 const Layout = ({children}: {children: React.ReactNode}) => {
     return (
