@@ -46,9 +46,9 @@ const CartTable = ({isLoading, cart}: Props) => {
                                     <TableCell>
                                         <div className="flex items-center">
                                             <img
-                                                src={urlFor(item?.product?.images[0]).width(80).height(60).url()}
+                                                src={urlFor(item?.product?.images[0]).width(80).url()}
                                                 alt={item?.product?.name}
-                                                className="object-contain"
+                                                className="w-[60px] object-contain"
                                             />
                                             <div className="ml-4 max-w-sm">
                                                 <Link href={`/products/${item?._id}`} className="font-work-sans hover:text-yellow-700 max-lg:line-clamp-2 text-neutral-500 text-xs sm:text-sm">{item?.product?.name}</Link>
