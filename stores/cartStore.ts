@@ -6,8 +6,8 @@ import {CART_BY_USER_QUERY} from "@/sanity/lib/queries";
 interface CartState {
     quantities: Record<string, number>;
     getCart: (cartId: string) => Promise<void>;
-    incrementQuantity: (productId: string, cartId: string) => Promise<void>;
-    decrementQuantity: (productId: string, cartId: string) => Promise<void>;
+    incrementQuantity: (productId: string, cartId: string | null) => Promise<void>;
+    decrementQuantity: (productId: string, cartId: string | null) => Promise<void>;
 }
 
 export const useCartStore = create<CartState>((set,get) => ({
@@ -28,6 +28,8 @@ export const useCartStore = create<CartState>((set,get) => ({
     },
 
     incrementQuantity: async (productId, cartId) => {
+        if(!cartId) return;
+
         const currentQuantities = { ...get().quantities };
 
         set({ quantities: { ...currentQuantities, [productId]: (currentQuantities[productId] || 0) + 1 } }); // Optimistic update
@@ -41,6 +43,8 @@ export const useCartStore = create<CartState>((set,get) => ({
     },
 
     decrementQuantity: async (productId, cartId) => {
+        if(!cartId) return;
+
         const currentQuantities = { ...get().quantities };
         const newQuantity = Math.max((currentQuantities[productId] || 0) - 1, 0);
         set({ quantities: { ...currentQuantities, [productId]: newQuantity } }); // Optimistic update

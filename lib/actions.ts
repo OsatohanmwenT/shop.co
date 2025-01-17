@@ -74,8 +74,26 @@ export const removeFromCart = async (_id: string, cartId: string) => {
 };
 
 export const linkCartToUser = async (cartId: string, userId: string) => {
-    const existingCart = await client.fetch(CART_BY_USER_QUERY, { cartId });
-    if (existingCart && existingCart.user?._ref === userId) return;
+    try {
+        const existingCart = await client.fetch(CART_BY_USER_QUERY, { cartId });
 
-    await writeClient.patch(cartId).set({ user: { _type: "reference", _ref: userId } }).commit();
+        if (existingCart && existingCart.user?._ref === userId) return;
+
+        if (!existingCart) {
+            console.log(`Cart with ID ${cartId} not found. Creating a new cart.`);
+            await writeClient.createIfNotExists({
+                _id: cartId,
+                _type: "cart",
+                user: { _type: "reference", _ref: userId },
+                cartItems: [],
+            });
+        } else {
+            await writeClient.patch(cartId).set({ user: { _type: "reference", _ref: userId } }).commit();
+        }
+
+        console.log(`Cart ${cartId} successfully linked to user ${userId}`);
+    } catch (error) {
+        console.error("Error linking cart to user:", error);
+        throw error;
+    }
 };

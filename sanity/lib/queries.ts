@@ -44,7 +44,20 @@ export const FILTER_QUERY = defineQuery(`*[_type == "filter"] | order(_createdAt
 
 export const CART_BY_USER_QUERY = defineQuery(`*[_type == "cart" && _id == $cartId][0]{_id,cartItems,user}`)
 
-export const CART_LIST_BY_USERID_QUERY = defineQuery(`*[_type == "cart" && _id == $cartId || user._ref == $cartId][0]{_id,cartItems[]{product->{_id,name,discount,price,stock,images[]}}`)
+export const CART_LIST_BY_USERID_QUERY = defineQuery(`
+*[_type == "cart" && _id == $cartId][0]{
+    _id,
+    cartItems[]{
+        _key,
+      quantity,
+      product->{
+        _id,
+        name,
+        price,
+        images[]{_key,asset -> {url}},
+      }
+    }
+  }`)
 
 export const COUNT_QUERY = defineQuery(`count(*[
   _type == "product" &&

@@ -16,8 +16,9 @@ interface Props {
 const AddToCartButton = ({ _id, children, className, max }:Props) => {
     const cartId = useCartId();
     const [isActionLoading, setIsActionLoading] = useState(false)
-    const { quantities, incrementQuantity, decrementQuantity } = useCartStore();
-    const quantity = quantities[_id] || 0;
+    const quantity = useCartStore((state) => state.quantities[_id] || 0);
+    const incrementQuantity = useCartStore((state) => state.incrementQuantity);
+    const decrementQuantity = useCartStore((state) => state.decrementQuantity);
 
     const handleAddToCart = async () => {
         setIsActionLoading(true);
