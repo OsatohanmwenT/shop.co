@@ -51,7 +51,7 @@ const CartTable = ({isLoading, cart}: Props) => {
                                                 className="w-[60px] object-contain"
                                             />
                                             <div className="ml-4 max-w-sm">
-                                                <Link href={`/products/${item?._id}`} className="font-work-sans hover:text-yellow-700 max-lg:line-clamp-2 text-neutral-500 text-xs sm:text-sm">{item?.product?.name}</Link>
+                                                <Link href={`/products/${item?.product?._id}`} className="font-work-sans hover:text-yellow-700 max-lg:line-clamp-2 text-neutral-500 text-xs sm:text-sm">{item?.product?.name}</Link>
                                             </div>
                                         </div>
                                     </TableCell>
