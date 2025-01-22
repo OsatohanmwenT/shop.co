@@ -21,9 +21,8 @@ const CartContainer = () => {
                 setCart(data)
             } catch (error) {
                 console.error("error when fetching cart:", error)
-            } finally {
-                setIsLoading(false)
             }
+            setIsLoading(false)
         }
         fetchItems()
     }, [cartId]);
