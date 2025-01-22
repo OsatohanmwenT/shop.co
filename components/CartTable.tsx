@@ -9,9 +9,10 @@ import {formatPrice} from "@/lib/utils";
 interface Props {
     isLoading: boolean;
     cart: Cart;
+    onError: string | null
 }
 
-const CartTable = ({isLoading, cart}: Props) => {
+const CartTable = ({isLoading, cart, onError}: Props) => {
     return (
         <div className="border rounded-lg overflow-hidden">
             <Table>
@@ -24,7 +25,7 @@ const CartTable = ({isLoading, cart}: Props) => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                        {cart === null || cart.cartItems === null &&
+                        {cart === null || cart.cartItems === null || onError &&
                             <TableRow>
                                 <TableCell colSpan={4}>
                                     <div className="rounded-lg py-10 bg-red-50 border-red-400 border flex items-center justify-center">
